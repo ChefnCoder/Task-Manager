@@ -60,8 +60,8 @@ export default function TaskList() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto mt-10 p-6 bg-white rounded-xl shadow-lg">
-      <h2 className="text-3xl font-bold text-gray-800 text-center mb-6">📝 Task Manager</h2>
+    <div className="max-w-6xl mx-auto mt-8 p-6 bg-white rounded-xl shadow-lg">
+      <h2 className="text-3xl font-bold text-gray-800 text-center mb-4">📝 Task Manager</h2>
 
       {/* Side-by-Side Layout */}
       <div className="flex flex-col md:flex-row justify-between gap-6">
@@ -97,8 +97,8 @@ export default function TaskList() {
           </button>
         </div>
 
-        {/* Task List (Right Side) */}
-        <div className="w-full md:w-1/2 p-6 border rounded-lg bg-gray-50 shadow-md">
+        {/* Task List (Right Side - Scrollable) */}
+        <div className="w-full md:w-1/2 p-6 border rounded-lg bg-gray-50 shadow-md overflow-y-auto max-h-[440px]">
           <h3 className="text-xl font-semibold mb-4">📋 Task List</h3>
           <ul className="space-y-4">
             {tasks.map((task) => (
