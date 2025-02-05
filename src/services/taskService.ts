@@ -1,5 +1,6 @@
 import { getTasks, addTask, updateTask, deleteTask } from "../app/action/tasks";
 import { Task } from "./taskTypes";
+import { Types } from "mongoose"; 
 
 // Fetch tasks
 export const fetchTasks = async (): Promise<Task[]> => {
@@ -15,7 +16,16 @@ export const createTask = async (title: string, description?: string, dueDate?: 
 export const toggleTaskComplete = async (id: string, completed: boolean) => {
   return await updateTask(id, { completed: !completed });
 };
-export const updateTaskDB = async (id: string, updatedData: Partial<Task>) => {
+interface TaskType {
+  _id: Types.ObjectId;
+  title: string;
+  description?: string;
+  dueDate?: Date;
+  completed: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+}
+export const updateTaskDB = async (id: string, updatedData: Partial<TaskType>) => {
     return await updateTask(id, updatedData);
   };
 

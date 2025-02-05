@@ -54,11 +54,17 @@ export default function TaskList() {
 
   const handleUpdateTask = async (id: string) => {
     if (!editValues.title.trim()) return;
-    await updateTaskDB(id, editValues);
+  
+    await updateTaskDB(id, {
+      title: editValues.title,
+      description: editValues.description,
+      dueDate: editValues.dueDate ? new Date(editValues.dueDate) : undefined, // ✅ Convert string to Date
+    });
+  
     setEditingTask(null);
     loadTasks();
   };
-
+  
   return (
     <div className="max-w-6xl mx-auto mt-8 p-6 bg-white rounded-xl shadow-lg">
       <h2 className="text-3xl font-bold text-gray-800 text-center mb-4">📝 Task Manager</h2>
