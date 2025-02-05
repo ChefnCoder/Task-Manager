@@ -2,7 +2,8 @@
 
 A simple and powerful **Task Management Application** built with **Next.js**, **MongoDB**, and **Tailwind CSS**. Manage your tasks efficiently with a modern, clean, and responsive UI.
 
-![Task Manager Preview](public\image.png) <!-- Replace with actual screenshot -->
+![Task Manager Screenshot](public/image.png)
+
 
 ---
 
