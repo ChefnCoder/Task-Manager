@@ -34,7 +34,7 @@ export const addTask = async (title: string, description?: string, dueDate?: Dat
   };
   
   // Update a task
-export const updateTask = async (id: string, updatedData: any) => {
+export const updateTask = async (id: string, updatedData: Partial<Task>) => {
   await connectDB();
   const task = await Task.findByIdAndUpdate(id, updatedData, { new: true }).lean();
 
