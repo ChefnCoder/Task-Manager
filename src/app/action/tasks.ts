@@ -2,11 +2,13 @@
 
 import { connectDB } from "@/lib/db";
 import { Task } from "@/models/Task";
-
+import { Types } from "mongoose";
 // Get all tasks
 export const getTasks = async () => {
     await connectDB();
-    const tasks = await Task.find().sort({ createdAt: -1 }).lean(); 
+    const tasks: { _id: Types.ObjectId; title: string; description?: string; dueDate?: Date; completed: boolean; createdAt: Date; updatedAt: Date }[] 
+    = await Task.find().sort({ createdAt: -1 }).lean();
+    
     return tasks.map((task) => ({
       _id: task._id.toString(), 
       title: task.title,
