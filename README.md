@@ -5,6 +5,10 @@ A simple and powerful **Task Management Application** built with **Next.js**, **
 ![Task Manager Screenshot](public/image.png)
 
 
+## 🎬 Demo
+
+🔗 **Live Demo**: [Task Manager on Vercel](https://task-manager-app-by-tanmay.vercel.app/) 
+
 ---
 
 ## 🌟 Features
@@ -26,12 +30,6 @@ A simple and powerful **Task Management Application** built with **Next.js**, **
 - **Styling:** Tailwind CSS
 - **Icons:** React Icons
 - **Deployment:** Vercel  
-
----
-
-## 🎬 Demo
-
-🔗 **Live Demo**: [Task Manager on Vercel](#) 
 
 ---
 
