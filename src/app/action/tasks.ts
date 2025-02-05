@@ -2,23 +2,24 @@
 
 import { connectDB } from "@/lib/db";
 import { Task } from "@/models/Task";
-import { Types } from "mongoose";
-// Get all tasks
+import { Types } from "mongoose"; 
+
 export const getTasks = async () => {
-    await connectDB();
-    const tasks: { _id: Types.ObjectId; title: string; description?: string; dueDate?: Date; completed: boolean; createdAt: Date; updatedAt: Date }[] 
-    = await Task.find().sort({ createdAt: -1 }).lean();
-    
-    return tasks.map((task) => ({
-      _id: task._id.toString(), 
-      title: task.title,
-      description: task.description,
-      dueDate: task.dueDate?.toISOString(), 
-      completed: task.completed,
-      createdAt: task.createdAt.toISOString(),
-      updatedAt: task.updatedAt.toISOString(),
-    }));
-  };
+  await connectDB();
+
+  const tasks = await Task.find().sort({ createdAt: -1 }).lean();
+
+  return tasks.map((task) => ({
+    _id: (task._id as Types.ObjectId).toString(), 
+    title: task.title ?? "", 
+    description: task.description ?? "",
+    dueDate: task.dueDate ? new Date(task.dueDate).toISOString() : undefined,
+    completed: task.completed ?? false, 
+    createdAt: new Date(task.createdAt).toISOString(), 
+    updatedAt: new Date(task.updatedAt).toISOString(),
+  }));
+};
+
 
 // Add a new task (Ensure the response is plain JSON)
 export const addTask = async (title: string, description?: string, dueDate?: Date) => {
