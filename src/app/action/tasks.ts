@@ -34,7 +34,8 @@ export const addTask = async (title: string, description?: string, dueDate?: Dat
   };
   
   // Update a task
-export const updateTask = async (id: string, updatedData: Partial<Task>) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const updateTask = async (id: string, updatedData: any) => {
   await connectDB();
   const task = await Task.findByIdAndUpdate(id, updatedData, { new: true }).lean();
 
